@@ -3,8 +3,25 @@
     </head>
     <body>
         <h1>VIS-EX02 (Penzinger, Ollmann)</h1><br/>
-        <a href ="./helloworld">Link to the Hello World Servlet</a><br/>
+
+        <br/><h2>Script Servlet: </h2>
         <a href ="./example?x=12&y=13">Link to the Example Servlet</a><br/>
+
+        <br/><h2>2.2.b Hello World Servlet: </h2>
+        <a href ="./helloworld">Link to the Hello World Servlet</a><br/>
+
+        <br/><h2>2.2.c Info Servlet: </h2>
         <a href ="./infoservlet">Link to the Info Servlet</a>
+
+        <br/><h2>2.2.d Session Servlet: </h2>
+        <form method="GET" action="./sessionservlet">
+            <label for="color">Pick a color: </label>
+            <input type="color" id ="color" name="color"><br/>
+
+            <label for="text">Input some text: </label>
+            <input type="text" id ="text" name="text"><br/>
+
+            <input type="submit"/>
+        </form>
     </body>
 </html>

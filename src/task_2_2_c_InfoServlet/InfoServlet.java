@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(
-        name = "InfoServlet",
+        name = "Info Servlet",
         urlPatterns = {"/infoservlet"}
 )
 public class InfoServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class InfoServlet extends HttpServlet {
 
         PrintWriter out = _response.getWriter();
         out.println("<HTML>");
-        out.println("<HEAD><TITLE>Infor Servlet</TITLE></HEAD>");
+        out.println("<HEAD><TITLE>Info Servlet</TITLE></HEAD>");
         out.println("<BODY>");
 
         // Client Info

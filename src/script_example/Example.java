@@ -5,7 +5,7 @@ import jakarta.servlet.http.*;
 import java.io.*;
 
 @WebServlet(
-        name = "example",
+        name = "Example",
         urlPatterns = {"/example"}
 )
 public class Example extends HttpServlet {
