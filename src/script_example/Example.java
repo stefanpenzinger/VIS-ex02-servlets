@@ -1,12 +1,11 @@
 package script_example;
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.*;
 
 @WebServlet(
         name = "example",
-        description = "Example from script (Add)",
         urlPatterns = {"/example"}
 )
 public class Example extends HttpServlet {
