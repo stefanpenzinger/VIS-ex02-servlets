@@ -1,13 +1,17 @@
 package script_example;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import java.io.*;
 
 @WebServlet(
         name = "Example",
         urlPatterns = {"/example"}
 )
+/**
+ *
+ */
 public class Example extends HttpServlet {
     protected void doGet(HttpServletRequest _request,
                          HttpServletResponse _response)
