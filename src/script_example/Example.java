@@ -1,16 +1,18 @@
 package script_example;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.*;
 
 @WebServlet(
         name = "Example",
         urlPatterns = {"/example"}
 )
+
 /**
- *
+ * Servlet Example from the script (used for testing)
+ * gets 2 numbers as get Parameter and adds them together
  */
 public class Example extends HttpServlet {
     protected void doGet(HttpServletRequest _request,

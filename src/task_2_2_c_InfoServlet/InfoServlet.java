@@ -1,14 +1,21 @@
 package task_2_2_c_InfoServlet;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.*;
 
 @WebServlet(
         name = "Info Servlet",
         urlPatterns = {"/infoservlet"}
 )
+
+/**
+ * Servlet which shows different client & server data
+ * dispalyed data:
+ * Client: IP-Address, Browser Type, MIME-Type, Protocol
+ * Server: Port, name
+ */
 public class InfoServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {

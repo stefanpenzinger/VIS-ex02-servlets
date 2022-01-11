@@ -1,16 +1,17 @@
 package task_2_2_e_EnvironmentServiceServlet;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import task_2_2_e_EnvironmentServiceServlet.c.Client;
 import task_2_2_e_EnvironmentServiceServlet.c.EnvData;
 import task_2_2_e_EnvironmentServiceServlet.rmi.IEnvService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.RMISecurityManager;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -20,6 +21,11 @@ import java.rmi.registry.Registry;
         name = "EnvironmentServiceServlet Servlet",
         urlPatterns = {"/enviromentserviceservlet"}
 )
+
+/**
+ * Servlet which displays the sensor data from the C++ Server (EX01)
+ * and the RMI Server (EX02.1)
+ */
 public class EnvironmentServiceServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
@@ -30,6 +36,8 @@ public class EnvironmentServiceServlet extends HttpServlet {
 
         reg = LocateRegistry.getRegistry();
         try {
+            // start SecurityManager to be on the save side
+            System.setSecurityManager (new RMISecurityManager());
 
             IEnvService service = (IEnvService) reg.lookup(addr);
             task_2_2_e_EnvironmentServiceServlet.rmi.EnvData data = service.requestEnvironmentData("air");

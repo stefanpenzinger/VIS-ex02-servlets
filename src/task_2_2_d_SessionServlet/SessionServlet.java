@@ -1,8 +1,8 @@
 package task_2_2_d_SessionServlet;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.*;
 import java.util.Random;
 
@@ -10,6 +10,13 @@ import java.util.Random;
         name = "Session Servlet",
         urlPatterns = {"/sessionservlet"}
 )
+
+/**
+ *  Servlet which uses HTTP Sessions to remember a text from the user
+ *  The user can type a text and choose a background color in the index.html file
+ *  and with a click on the submit button this servlet is called and the data are passed via
+ *  get Parameter.
+ */
 public class SessionServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
@@ -54,8 +61,6 @@ public class SessionServlet extends HttpServlet {
         else {
             out.println("<p>You have not visited this site before</p>");
         }
-
-
 
         out.println("<p>" + userAgent + "</p>");
 
