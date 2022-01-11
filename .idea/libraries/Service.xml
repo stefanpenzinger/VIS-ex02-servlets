@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Service">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../VIS-Ex02-rmi/VIS-ex02/out/artifacts/Service_jar/Service.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
