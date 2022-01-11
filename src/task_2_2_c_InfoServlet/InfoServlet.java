@@ -23,6 +23,7 @@ public class InfoServlet extends HttpServlet {
         out.println("<HEAD><TITLE>Info Servlet</TITLE></HEAD>");
         out.println("<BODY>");
 
+
         // Client Info
         out.println("<H1>Client</H1>");
         out.println("<p>IP-Address: " + _request.getRemoteAddr() + "</p>");
