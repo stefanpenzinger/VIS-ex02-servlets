@@ -1,8 +1,8 @@
 package task_2_2_d_SessionServlet;
 
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import java.io.*;
 import java.util.Random;
 

@@ -1,17 +1,16 @@
 package task_2_2_e_EnvironmentServiceServlet;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import task_2_2_e_EnvironmentServiceServlet.c.Client;
 import task_2_2_e_EnvironmentServiceServlet.c.EnvData;
 import task_2_2_e_EnvironmentServiceServlet.rmi.IEnvService;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.rmi.RMISecurityManager;
+import java.io.PrintWriter;;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -31,13 +30,14 @@ public class EnvironmentServiceServlet extends HttpServlet {
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
         _response.setContentType("text/html");
 
-        String addr = "IEnvService";
-        Registry reg = null;
-
-        reg = LocateRegistry.getRegistry();
         try {
+            String addr = "IEnvService";
+            Registry reg = null;
+
+            reg = LocateRegistry.getRegistry(Registry.REGISTRY_PORT);
+
             // start SecurityManager to be on the save side
-            System.setSecurityManager (new RMISecurityManager());
+            //System.setSecurityManager (new RMISecurityManager());
 
             IEnvService service = (IEnvService) reg.lookup(addr);
             task_2_2_e_EnvironmentServiceServlet.rmi.EnvData data = service.requestEnvironmentData("air");
@@ -55,7 +55,7 @@ public class EnvironmentServiceServlet extends HttpServlet {
 
             // RMI Server
             out.println("<h1>RMI Server</h1>");
-            //out.println("<p>"+ data.toString() + "</p>");
+            out.println("<p>"+ data.toString() + "</p>");
 
             // C++ Server
             out.println("<h1>C++ Server </h1>");
