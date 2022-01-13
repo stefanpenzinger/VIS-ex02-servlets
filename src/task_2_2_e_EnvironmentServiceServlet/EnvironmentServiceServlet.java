@@ -30,17 +30,17 @@ public class EnvironmentServiceServlet extends HttpServlet {
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
         _response.setContentType("text/html");
 
-        try {
-            String addr = "IEnvService";
-            Registry reg = null;
+        //try {
+           //String addr = "IEnvService";
+            //Registry reg = null;
 
-            reg = LocateRegistry.getRegistry(Registry.REGISTRY_PORT);
+            //reg = LocateRegistry.getRegistry(Registry.REGISTRY_PORT);
 
             // start SecurityManager to be on the save side
             //System.setSecurityManager (new RMISecurityManager());
 
-            IEnvService service = (IEnvService) reg.lookup(addr);
-            task_2_2_e_EnvironmentServiceServlet.rmi.EnvData data = service.requestEnvironmentData("air");
+            //IEnvService service = (IEnvService) reg.lookup(addr);
+            //task_2_2_e_EnvironmentServiceServlet.rmi.EnvData data = service.requestEnvironmentData("air");
 
             Client client = new Client(4949, "127.0.0.1");
             EnvData[] sensors = client.requestAll();
@@ -55,7 +55,9 @@ public class EnvironmentServiceServlet extends HttpServlet {
 
             // RMI Server
             out.println("<h1>RMI Server</h1>");
-            out.println("<p>"+ data.toString() + "</p>");
+            //out.println("<p>"+ data.toString() + "</p>");
+            out.println("<p>Not working :(</p>");
+            out.println("<iframe src=\"https://giphy.com/embed/xiAqCzbB3eZvG\" width=\"480\" height=\"302\" frameBorder=\"0\" class=\"giphy-embed\" allowFullScreen></iframe><p><a href=\"https://giphy.com/gifs/angry-monday-working-xiAqCzbB3eZvG\">via GIPHY</a></p>");
 
             // C++ Server
             out.println("<h1>C++ Server </h1>");
@@ -80,11 +82,11 @@ public class EnvironmentServiceServlet extends HttpServlet {
 
             out.close();
 
-        }catch (Exception e){
+        /*}catch (Exception e){
             PrintWriter out = _response.getWriter();
             out.println("<html><body><h1>Error (" + e.toString() + ")</h1></body></html>");
             e.printStackTrace();
-        }
+        }*/
     }
 }
 
