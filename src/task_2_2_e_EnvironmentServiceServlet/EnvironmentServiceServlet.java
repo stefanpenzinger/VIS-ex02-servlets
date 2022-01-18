@@ -5,15 +5,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.namespace.QName;
+
 import task_2_2_e_EnvironmentServiceServlet.c.Client;
 import task_2_2_e_EnvironmentServiceServlet.c.EnvData;
+import task_2_2_e_EnvironmentServiceServlet.client.EnvironmentDataService;
+import task_2_2_e_EnvironmentServiceServlet.client.IEnvironmentData;
+import task_2_2_e_EnvironmentServiceServlet.client.Locations;
 import task_2_2_e_EnvironmentServiceServlet.rmi.IEnvService;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;;
+import java.net.URL;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 @WebServlet(
@@ -21,7 +32,7 @@ import java.rmi.registry.Registry;
         urlPatterns = {"/enviromentserviceservlet"}
 )
 
-/**
+/*/
  * Servlet which displays the sensor data from the C++ Server (EX01)
  * and the RMI Server (EX02.1)
  */
@@ -76,11 +87,49 @@ public class EnvironmentServiceServlet extends HttpServlet {
                 out.println("<p>C++ Server is offline!</p>");
             }
 
+            // Weather Server
+            out.println("<h1>Weather Server </h1>");
 
-            out.println("<meta http-equiv=\"refresh\" content=\"5\"/>");
-            out.println("</BODY></HEAD></HTML>");
+            try{
+                Service service = Service.create(
+                                new URL("http://localhost:8081/Environment?wsdl"),
+                                new QName("http://b.task3_2.vis.mc.hagenberg.fh.at/",
+                                        "EnvironmentDataService"));
 
-            out.close();
+                IEnvironmentData mSoap = service.getPort(IEnvironmentData.class);
+
+                out.println("<h4>Wien </h4>");
+                out.print("<p> + " + mSoap.requestWeatherData(Locations.WIEN) + "</p>");
+
+                out.println("<h4>Linz </h4>");
+                out.print("<p> + " + mSoap.requestWeatherData(Locations.LINZ) + "</p>");
+
+                out.println("<h4>Graz </h4>");
+                out.print("<p> + " + mSoap.requestWeatherData(Locations.GRAZ) + "</p>");
+
+            } catch (Exception e){
+                out.println("<p>Error</p>");
+                //out.println("<p>Exception: " + e.toString() + "</p>");
+            }
+            /*
+                URL url = new URL("http://localhost:8081/Environment?wsdl");
+                out.println("<p>" + url.toString() + "</p>");
+                EnvironmentDataService helloWorldService = new EnvironmentDataService(url);
+                out.println("<p>" + helloWorldService.toString() + "</p>");
+                IEnvironmentData ed = helloWorldService.getEnvironmentDataPort();
+                out.println("<p>" + ed.toString() + "</p>");
+
+                out.println("<p>Test</p>");
+                out.println("<p>" + ed.requestEnvironmentDataTypes() + "</p>");
+            } catch (Exception e){
+                out.println("<p>Error</p>");
+                //out.println("<p>Exception: " + e.toString() + "</p>");
+            }*/
+
+        out.println("<meta http-equiv=\"refresh\" content=\"5\"/>");
+        out.println("</BODY></HEAD></HTML>");
+
+        out.close();
 
         /*}catch (Exception e){
             PrintWriter out = _response.getWriter();

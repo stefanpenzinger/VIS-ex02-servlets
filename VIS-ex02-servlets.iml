@@ -18,6 +18,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Service" level="project" />
+    <orderEntry type="library" name="gmbal-4.0.1" level="project" />
+    <orderEntry type="library" name="eclipselink" level="project" />
+    <orderEntry type="library" name="json-20211205" level="project" />
   </component>
 </module>
