@@ -24,7 +24,9 @@ import java.rmi.registry.Registry;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 
 @WebServlet(
@@ -108,23 +110,32 @@ public class EnvironmentServiceServlet extends HttpServlet {
                 out.print("<p> + " + mSoap.requestWeatherData(Locations.GRAZ) + "</p>");
 
             } catch (Exception e){
-                out.println("<p>Error</p>");
+                out.println("<p>Weather Server not running!</p>");
                 //out.println("<p>Exception: " + e.toString() + "</p>");
             }
-            /*
-                URL url = new URL("http://localhost:8081/Environment?wsdl");
-                out.println("<p>" + url.toString() + "</p>");
-                EnvironmentDataService helloWorldService = new EnvironmentDataService(url);
-                out.println("<p>" + helloWorldService.toString() + "</p>");
-                IEnvironmentData ed = helloWorldService.getEnvironmentDataPort();
-                out.println("<p>" + ed.toString() + "</p>");
 
-                out.println("<p>Test</p>");
-                out.println("<p>" + ed.requestEnvironmentDataTypes() + "</p>");
-            } catch (Exception e){
-                out.println("<p>Error</p>");
-                //out.println("<p>Exception: " + e.toString() + "</p>");
-            }*/
+        // Rest Server
+
+        try {
+            URL url = new URL("http://localhost:8080/RestServlet/b/EnvironmentService/ALL");
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+
+
+            int length = http.getContentLength();
+            int resCode = http.getResponseCode();
+            String mime = http.getContentType();
+
+            Scanner s = new Scanner(http.getInputStream(), "UTF-8");
+            s.useDelimiter("\\z"); // \z --> till end of input
+
+            String content = s.next();
+            s.close();
+
+            out.println("<h2>REST</h2>");
+            out.println("<p> + " + content + "</p>");
+        } catch(Exception e){
+            out.println("<p>Error: " + e.toString() + "</p>");
+        }
 
         out.println("<meta http-equiv=\"refresh\" content=\"5\"/>");
         out.println("</BODY></HEAD></HTML>");
