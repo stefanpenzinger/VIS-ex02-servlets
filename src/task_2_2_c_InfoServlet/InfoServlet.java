@@ -9,6 +9,13 @@ import java.io.*;
         name = "Info Servlet",
         urlPatterns = {"/infoservlet"}
 )
+
+/**
+ * Servlet which shows different client & server data
+ * dispalyed data:
+ * Client: IP-Address, Browser Type, MIME-Type, Protocol
+ * Server: Port, name
+ */
 public class InfoServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
@@ -18,6 +25,7 @@ public class InfoServlet extends HttpServlet {
         out.println("<HTML>");
         out.println("<HEAD><TITLE>Info Servlet</TITLE></HEAD>");
         out.println("<BODY>");
+
 
         // Client Info
         out.println("<H1>Client</H1>");

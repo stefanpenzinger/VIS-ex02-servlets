@@ -9,7 +9,13 @@ import java.io.*;
         name = "Hello World",
         urlPatterns = {"/helloworld"}
 )
+
+/**
+ * HelloWorld Servlets which shows just a simple text
+ * and also shows a counts how often the servlet has been called.
+ */
 public class HelloWorld extends HttpServlet {
+    /** member Variable to count how often the Servlet has been called */
     private int mCounter = 0;
 
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {

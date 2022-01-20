@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="eclipselink">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/eclipselink.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/istack-commons-runtime-3.0.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/jakarta.json.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/javax.activation-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/jaxb-api-2.4.0-b180830.0359.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../ex03/repo/VIS-ex03/WEB-INF/lib/jaxb-impl-2.4.0-b180830.0438.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
